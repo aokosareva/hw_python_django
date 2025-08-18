@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепт {{recipe_name}} </title>
+</head>
+<body>
+<h1>Рецепт "{{ recipe_name }}" на {{ amount }} порц.:</h1>
+    <table width="300px" cellpadding="0" cellspacing="0" border="1px solid #555">
+    {% for key, value in recipe.items%}
+        <tr>
+            <td width="50%">{{ key.capitalize }}</td>
+            <td align="center">{{ value }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
