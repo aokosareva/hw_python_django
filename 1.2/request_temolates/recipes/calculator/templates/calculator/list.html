@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список блюд</title>
+</head>
+<body>
+<h2>{{ description }}</h2>
+<ol>
+    {% for recipe in recipe_names %}
+    <li><a href="{{ recipe }}">{{ recipe }}</a></li>
+    {% endfor %}
+</ol>
+</body>
+</html>

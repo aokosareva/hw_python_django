@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепт {{recipe_name}} </title>
+</head>
+<body>
+<h1>Рецепт "{{ recipe_name }}" на {{ amount }} порц.:</h1>
+    <p>
+        {% if amount > 1%}
+         [<a href="?servings={{amount|add:-1}}">Меньше</a>]
+        {% endif %}
+        [<a href="?servings={{amount|add:1}}">Больше</a>]
+    </p>
+    <table width="300px" cellpadding="0" cellspacing="0" border="1px solid #555">
+    {% for key, value in recipe.items%}
+        <tr>
+            <td width="50%">{{ key.capitalize }}</td>
+            <td align="center">{{ value|floatformat:2 }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
