@@ -32,4 +32,5 @@ def time_view(request):
 def workdir_view(request):
     workdir_path = os.getcwd()
     workdir = os.listdir(workdir_path)
+    
     return HttpResponse(f"Содержимое рабочей директории [{workdir_path}]:<br> -- {",<br> -- ".join(workdir)}")
