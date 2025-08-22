@@ -27,7 +27,7 @@
           <td>{{ sale.client.name }}</td>
           <td>{{ sale.client.middle_name }}</td>
           <td>{{ sale.client.phone_number }}</td>
-          <td>{{ sale.created_at|date:"d/m/Y" }} {{ sale.created_at|time:"H:i" }}</td>
+          <td>{{ sale.created_at|date:"d/m/Y H:i" }}</td>
         </tr>
       {% endfor %}
     </tbody>

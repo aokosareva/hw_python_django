@@ -5,12 +5,15 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-xs-12">
+          <div class="col-md-12 col-xs-12">
+            <div> <a href="/cars"><< К списку</a></div>
+          </div>
+          <div class="col-md-6 col-xs-12">
           <div>
             <img src="{{ car.image.url }}" alt="" class="img-responsive wc-image">
           </div>
         </div>
-        <div class="col-md-6 col-xs-12">
+          <div class="col-md-6 col-xs-12">
           <h2>{{ car.model }}, {{ car.year }}</h2>
           <p class="lead">Цена: <strong class="text-primary">{{ car.price | floatformat:"-2g" }} ₽</strong></p>
           <div class="row">
@@ -79,6 +82,7 @@
             </div>
           </div>
         </div>
+          <div class="col-md-12 col-xs-12"><a href="/cars/{{ car.id }}/sales">Продажи >></a></div>
       </div>
     </div>
   </section>

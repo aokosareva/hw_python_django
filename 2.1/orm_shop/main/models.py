@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Now
 
 
 class Client(models.Model):
@@ -10,7 +11,6 @@ class Client(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.middle_name} {self.last_name}'
-
 
 GEARBOX_CHOICES = (
     ('manual', 'Механика'),
@@ -37,7 +37,6 @@ BODY_TYPE_CHOICES = (
     ('cabrio', 'Кабриолет')
 )
 
-
 DRIVE_UNIT_CHOICES = (
     ('rear', 'Задний'),
     ('front', 'Передний'),
@@ -46,8 +45,23 @@ DRIVE_UNIT_CHOICES = (
 
 
 class Car(models.Model):
-    pass  # реализуйте модель
+    model = models.CharField(max_length=50)
+    year = models.IntegerField()
+    color = models.CharField(max_length=50)
+    mileage = models.DecimalField(max_digits=5, decimal_places=2)
+    volume = models.DecimalField(max_digits=5, decimal_places=2)
+    body_type = models.CharField(max_length=100, choices=BODY_TYPE_CHOICES)
+    drive_unit = models.CharField(max_length=100, choices=DRIVE_UNIT_CHOICES)
+    gearbox = models.CharField(max_length=100, choices=GEARBOX_CHOICES)
+    fuel_type = models.CharField(max_length=100, choices=FUEL_TYPE_CHOICES)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='images', null=False)
 
+    def __str__(self):
+        return f"{self.model} [{self.year}] - {self.price}"
 
 class Sale(models.Model):
-    pass  # реализуйте модель
+    client = models.ManyToManyField(Client)
+    car = models.ManyToManyField(Car)
+    created_at = models.DateTimeField(db_default=Now())
+
