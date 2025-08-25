@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'library.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'название_БД',
-        'USER': 'имя_пользователя',
-        'PASSWORD': 'пароль',
+        'NAME': 'library',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
-        'PORT': 5432
+        'PORT': 5434
     }
 }
 
