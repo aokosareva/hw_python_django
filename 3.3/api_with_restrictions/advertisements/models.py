@@ -7,12 +7,13 @@ class AdvertisementStatusChoices(models.TextChoices):
 
     OPEN = "OPEN", "Открыто"
     CLOSED = "CLOSED", "Закрыто"
+    DRAFT = "DRAFT", "Черновик"
 
 
 class Advertisement(models.Model):
     """Объявление."""
 
-    title = models.TextField()
+    title = models.CharField(max_length=255)
     description = models.TextField(default='')
     status = models.TextField(
         choices=AdvertisementStatusChoices.choices,
@@ -21,6 +22,7 @@ class Advertisement(models.Model):
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        related_name='advs'
     )
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -28,3 +30,6 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
+    def is_draft(self):
+        return self.status == AdvertisementStatusChoices.DRAFT
